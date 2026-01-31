@@ -1,0 +1,7 @@
+/sitemap.xml
+  Cache-Control: no-cache, no-store, must-revalidate
+  Pragma: no-cache
+  Expires: 0
+
+/robots.txt
+  Cache-Control: no-cache
