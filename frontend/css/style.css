@@ -1515,3 +1515,7 @@ header {
   transform: translateY(-3px);
   box-shadow: 0 12px 26px rgba(199,54,36,0.45) !important;
 }
+
+.hero::before {
+  background-image: url("../images/designer-bg.png");
+}
