@@ -1858,3 +1858,100 @@ header {
   :root { --nav-height: 140px; }
   .hero { padding-top: calc(var(--nav-height) + 1rem); }
 }
+/* =====================================================
+   FORCE MOBILE NAVBAR OVERRIDE — DROP-IN FINAL
+   (Paste at END of CSS)
+===================================================== */
+@media (max-width: 768px) {
+
+  :root {
+    --nav-height: 120px;
+  }
+
+  /* HEADER — FORCE */
+  body header {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0;
+    width: 100% !important;
+    background: #fffefb !important;
+    border-bottom: 1px solid rgba(0,0,0,.08) !important;
+    z-index: 1000 !important;
+  }
+
+  /* NAV CONTAINER — KILL OLD FLEX */
+  body header .nav {
+    display: grid !important;
+    grid-template-rows: auto auto !important;
+    gap: 0.6rem !important;
+    text-align: center !important;
+
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 0.8rem 1rem 1rem !important;
+
+    align-items: center !important;
+    justify-items: center !important;
+
+    position: relative !important;
+  }
+
+  /* BRAND — FORCE CENTER */
+  body header .nav strong,
+  body header .nav h1,
+  body header .nav .logo {
+    font-size: 1.45rem !important;
+    font-weight: 900 !important;
+    color: var(--brand) !important;
+    line-height: 1.2 !important;
+
+    margin: 0 auto !important;
+    text-align: center !important;
+  }
+
+  /* LINKS — OVERRIDE ANY PREVIOUS RULE */
+  body header .nav-links {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+
+    gap: 1.2rem !important;
+    flex-wrap: wrap !important;
+
+    font-weight: 600 !important;
+    text-align: center !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* LANGUAGE SWITCHER — FORCE TOP RIGHT */
+  body header .lang-switcher {
+    position: absolute !important;
+    top: 0.6rem !important;
+    right: 0.6rem !important;
+
+    display: flex !important;
+    gap: 6px !important;
+
+    transform: none !important;
+  }
+
+  body header .lang-switcher button {
+    border: 1px solid var(--brand) !important;
+    background: transparent !important;
+    color: var(--brand) !important;
+
+    padding: 4px 10px !important;
+    border-radius: 999px !important;
+
+    font-weight: 800 !important;
+    font-size: 0.75rem !important;
+  }
+
+  body header .lang-switcher button.active {
+    background: var(--brand) !important;
+    color: #fff !important;
+  }
+
+}
