@@ -1887,3 +1887,27 @@ header {
   }
 }
 
+@media (max-width: 768px) {
+  .lang-switcher {
+    position: fixed;             /* floats below the header */
+    top: calc(var(--nav-height) + 8px);
+    right: 10px;
+    z-index: 1000;
+    display: inline-flex;
+    gap: 8px;
+    padding: 6px;
+    border-radius: 999px;
+    background: rgba(255,255,255,.85);
+    border: 1px solid color-mix(in oklab, var(--brand) 30%, #e5e7eb);
+    box-shadow: 0 12px 28px rgba(0,0,0,.12);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  .lang-switcher .active,[aria-current="true"]{
+    background: var(--brand); color:#fff;
+    box-shadow: 0 10px 22px color-mix(in oklab, var(--brand) 45%, transparent);
+  }
+
+  /* No need to reserve space inside the header */
+  .nav { padding-right: 1rem; }
+}
