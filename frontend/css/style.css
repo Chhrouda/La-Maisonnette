@@ -1964,9 +1964,67 @@ header {
     scroll-margin-top: calc(var(--nav-height) + 56px);
   }
 }
+/* ==== MOBILE-ONLY FIXED LANGUAGE SWITCHER (≤768px) — FINAL ==== */
+@media (max-width: 768px) {
+  /* Floating language chip: fixed under the header, always visible */
+  .lang-switcher {
+    position: fixed;                               /* stays while scrolling */
+    top: calc(var(--nav-height) + 8px);
+    right: 10px;                                   /* LTR default (flips in RTL below) */
+    z-index: 1200;                                 /* above header & hero */
+    display: inline-flex;
+    gap: 8px;
+    padding: 6px;
+    border-radius: 999px;
+
+    /* 2026 glassy look */
+    background: rgba(255,255,255,.85);
+    border: 1px solid color-mix(in oklab, var(--brand) 30%, #e5e7eb);
+    box-shadow: 0 12px 28px rgba(0,0,0,.12);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  /* Active state */
+  .lang-switcher .active,
+  .lang-switcher [aria-current="true"] {
+    background: var(--brand);
+    color: #fff;
+    box-shadow: 0 10px 22px color-mix(in oklab, var(--brand) 45%, transparent);
+  }
+
+  /* Respect iOS safe areas */
+  @supports (padding: max(0px)) {
+    .lang-switcher {
+      top: calc(var(--nav-height) + max(8px, env(safe-area-inset-top)));
+      right: max(10px, env(safe-area-inset-right));
+    }
+  }
+
+  /* RTL: pin to left instead of right */
+  html[dir="rtl"] .lang-switcher {
+    right: auto;
+    left: 10px;
+  }
+  @supports (padding: max(0px)) {
+    html[dir="rtl"] .lang-switcher {
+      left: max(10px, env(safe-area-inset-left));
+    }
+  }
+
+  /* Since the chip floats, header doesn't need extra right padding */
+  .nav { padding-right: 1rem; }
+}
+
+/* Optional: accessible focus ring (applies to all viewports) */
 .lang-switcher button:focus-visible,
 .lang-switcher a:focus-visible {
   outline: 2px solid color-mix(in oklab, var(--brand) 70%, #fff);
   outline-offset: 2px;
   border-radius: 999px;
+}
+
+/* Optional: avoid chip touching hero text on ultra-small phones */
+@media (max-width: 420px) {
+  .hero { scroll-margin-top: calc(var(--nav-height) + 56px); }
 }
