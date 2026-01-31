@@ -1976,3 +1976,73 @@ header {
 @media (max-width: 420px) {
   .hero { scroll-margin-top: calc(var(--nav-height) + 56px); }
 }
+/* ============================
+   LANG SWITCHER — FINAL OVERRIDE
+   Mobile only (≤768px)
+   - Fixed under header
+   - Centered horizontally (like your screenshot)
+   - Ignores previous absolute rules
+   ============================ */
+@media (max-width: 768px) {
+  header .lang-switcher,
+  .nav .lang-switcher,
+  .lang-switcher {
+    position: fixed !important;                       /* do not scroll with content */
+    z-index: 2147483647 !important;                   /* above everything */
+    top: calc(var(--nav-height) + 8px) !important;    /* sit under header */
+    left: 50% !important;                             
+    right: auto !important;                           
+    transform: translateX(-50%) !important;           /* center horizontally */
+    margin: 0 !important;
+
+    /* Modern glassy look kept */
+    display: inline-flex !important;
+    gap: 8px !important;
+    padding: 6px !important;
+    border-radius: 999px !important;
+    background: rgba(255,255,255,.85) !important;
+    border: 1px solid color-mix(in oklab, var(--brand) 30%, #e5e7eb) !important;
+    box-shadow: 0 12px 28px rgba(0,0,0,.12) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+  }
+
+  /* Active pill */
+  .lang-switcher .active,
+  .lang-switcher [aria-current="true"] {
+    background: var(--brand) !important;
+    color: #fff !important;
+    box-shadow: 0 10px 22px color-mix(in oklab, var(--brand) 45%, transparent) !important;
+  }
+
+  /* Respect iOS safe areas */
+  @supports (padding: max(0px)) {
+    header .lang-switcher,
+    .nav .lang-switcher,
+    .lang-switcher {
+      top: calc(var(--nav-height) + max(8px, env(safe-area-inset-top))) !important;
+    }
+  }
+
+  /* RTL: keep it centered (no flip needed), but if you prefer right aligned in RTL,
+     uncomment the block below and remove the centering above.
+  */
+  /*
+  html[dir="rtl"] .lang-switcher {
+    left: auto !important;
+    right: max(10px, env(safe-area-inset-right)) !important;
+    transform: none !important;
+  }
+  */
+
+  /* Kill legacy mobile rule that sets it absolute in your CSS */
+  .nav .lang-switcher { position: fixed !important; }
+}
+
+/* Optional: focus ring for accessibility */
+.lang-switcher button:focus-visible,
+.lang-switcher a:focus-visible {
+  outline: 2px solid color-mix(in oklab, var(--brand) 70%, #fff);
+  outline-offset: 2px;
+  border-radius: 999px;
+}
