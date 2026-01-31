@@ -1516,20 +1516,94 @@ header {
   box-shadow: 0 12px 26px rgba(199,54,36,0.45) !important;
 }
 
-.hero::before {
-  background-image: url("/images/Designer-bg.png?v=3");
-  background-size: cover;
-  background-position: center;
+/* 1) Hero container */
+.hero {
+  position: relative;
+  min-height: clamp(52vh, 62vw, 78vh);  /* responsive height */
+  overflow: hidden;
+  isolation: isolate;                   /* create a new stacking context */
+  display: grid;
+  place-items: center;                  /* centers your card */
+  padding-inline: 1rem;
 }
-/* Force hero background to a root-relative, versioned URL */
+
+/* Keep hero content above overlays */
+.hero > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* 2) Background image layer (no blur by default) */
 .hero::before {
-  content: "";                 /* IMPORTANT for pseudo-element to render */
+  content: "";
   position: absolute;
   inset: 0;
-  background-image: url("/images/Designer-bg.png?v=5"); /* <- pick the URL that loads in step #2 */
+
+  /* Use the relative path from /frontend/css/style.css to /frontend/images/… */
+  background-image: url("../images/Designer-bg.png?v=5");
+  background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
-  filter: blur(2px);
-  transform: scale(1.04);
+
+  /* Focal point: push the subject (jar + basket) slightly left & down
+     Adjust these percentages until it feels perfect */
+  background-position: 30% 40%;
+
+  transform: none;          /* remove scale unless you re-enable blur */
   z-index: 0;
+  pointer-events: none;
+}
+
+/* 3) Soft contrast overlay so text reads better */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  /* Subtle dark/sepia wash + top/bottom gradients for readability */
+  background:
+    linear-gradient(to bottom, rgba(0,0,0,0.12), rgba(0,0,0,0.00) 40%, rgba(0,0,0,0.10)),
+    rgba(48, 32, 18, 0.08);  /* warm tone, matches your brand palette */
+
+  mix-blend-mode: multiply;  /* keeps colors rich without greying out */
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* 4) Optional: your hero card refinements for better contrast */
+.hero .card {
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  background: rgba(255, 255, 255, 0.86);
+  border-radius: 16px;
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.15),
+    0 1px 0 rgba(255,255,255,0.8) inset;
+}
+
+/* 5) Responsive focal re-position: narrow screens often crop center-left too hard */
+@media (max-width: 900px) {
+  .hero {
+    min-height: 58vh;
+  }
+  .hero::before {
+    /* slide subject more to center on small screens */
+    background-position: 45% 45%;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero {
+    min-height: 54vh;
+  }
+  .hero::before {
+    background-position: 55% 45%;
+  }
+}
+
+/* 6) If you still want a tiny blur on the background only on large screens: */
+@media (min-width: 1200px) {
+  .hero::before {
+    filter: blur(1.2px);
+    transform: scale(1.02);   /* compensates blur edge shrink */
+  }
 }

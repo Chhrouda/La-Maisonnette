@@ -1,4 +1,3 @@
-
 /* =====================
    CONFIG
 ===================== */
@@ -677,4 +676,3 @@ function tKey(key) {
   const t = translations[lang] || translations.en;
   return t[key] || translations.en[key] || key;
 }
-
