@@ -1816,90 +1816,37 @@ header {
   align-items: center;
   justify-content: center;
 }
-/* ======================================================
-   MOBILE NAVBAR — FINAL FIX (DROP-IN)
-   No JS • No HTML changes • Safe overrides only
-====================================================== */
 @media (max-width: 768px) {
-
-  /* Header sizing */
-  :root {
-    --nav-height: 140px;
-  }
-
-  header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: #fffefb;
-    z-index: 999;
-  }
-
-  /* Nav layout */
   .nav {
+    position: relative;
     display: grid;
-    grid-template-rows: auto auto;
-    align-items: center;
-    gap: 0.6rem;
-    padding: 0.8rem 1rem 0.9rem;
+    grid-template-rows: auto auto; /* brand + links */
+    gap: .6rem;
+    padding: .9rem 1rem .95rem;
+    padding-right: 124px;           /* reserve space for pill */
   }
 
-  /* Brand / Logo */
-  .nav h1,
-  .nav .logo,
-  .nav strong {
-    margin: 0;
+  .nav h1, .nav .logo, .nav strong {
     text-align: center;
-    font-size: 1.55rem;
+    font-size: clamp(1.15rem, 4.2vw, 1.55rem);
     font-weight: 900;
     line-height: 1.2;
     white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
-  /* Nav links row */
-  .nav-links {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1.2rem;
-    flex-wrap: wrap;
-    font-size: 0.95rem;
-  }
-
-  .nav-links a {
-    margin: 0;
-    padding: 0.2rem 0;
-    white-space: nowrap;
-  }
-
-  /* Language switcher (top right pill) */
   .lang-switcher {
     position: absolute;
-    top: 0.6rem;
-    right: 0.6rem;
-    transform: scale(0.9);
-  }
-
-  /* Prevent hero overlap */
-  .hero {
-    padding-top: calc(var(--nav-height) + 1rem);
-  }
-}
-
-@media (max-width: 768px) {
-  .lang-switcher {
-    position: fixed;             /* floats below the header */
-    top: calc(var(--nav-height) + 8px);
-    right: 10px;
-    z-index: 1000;
+    top: .6rem;
+    right: .6rem;
     display: inline-flex;
     gap: 8px;
-    padding: 6px;
+    padding: 4px;
     border-radius: 999px;
-    background: rgba(255,255,255,.85);
-    border: 1px solid color-mix(in oklab, var(--brand) 30%, #e5e7eb);
-    box-shadow: 0 12px 28px rgba(0,0,0,.12);
+    background: color-mix(in oklab, #fff 80%, var(--brand) 20%);
+    border: 1px solid color-mix(in oklab, var(--brand) 35%, #d1d5db);
+    box-shadow: 0 10px 24px rgba(0,0,0,.10);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
   }
@@ -1908,141 +1855,6 @@ header {
     box-shadow: 0 10px 22px color-mix(in oklab, var(--brand) 45%, transparent);
   }
 
-  /* No need to reserve space inside the header */
-  .nav { padding-right: 1rem; }
-}
-
-/* ==== MOBILE-ONLY FIXED LANGUAGE SWITCHER (≤768px) — FINAL ==== */
-@media (max-width: 768px) {
-  /* Floating language chip: fixed under the header, always visible */
-  .lang-switcher {
-    position: fixed;                               /* stays while scrolling */
-    top: calc(var(--nav-height) + 8px);
-    right: 10px;                                   /* LTR default (flips in RTL below) */
-    z-index: 1200;                                 /* above header & hero */
-    display: inline-flex;
-    gap: 8px;
-    padding: 6px;
-    border-radius: 999px;
-
-    /* 2026 glassy look */
-    background: rgba(255,255,255,.85);
-    border: 1px solid color-mix(in oklab, var(--brand) 30%, #e5e7eb);
-    box-shadow: 0 12px 28px rgba(0,0,0,.12);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-  }
-
-  /* Active state */
-  .lang-switcher .active,
-  .lang-switcher [aria-current="true"] {
-    background: var(--brand);
-    color: #fff;
-    box-shadow: 0 10px 22px color-mix(in oklab, var(--brand) 45%, transparent);
-  }
-
-  /* Respect iOS safe areas */
-  @supports (padding: max(0px)) {
-    .lang-switcher {
-      top: calc(var(--nav-height) + max(8px, env(safe-area-inset-top)));
-      right: max(10px, env(safe-area-inset-right));
-    }
-  }
-
-  /* RTL: pin to left instead of right */
-  html[dir="rtl"] .lang-switcher {
-    right: auto;
-    left: 10px;
-  }
-  @supports (padding: max(0px)) {
-    html[dir="rtl"] .lang-switcher {
-      left: max(10px, env(safe-area-inset-left));
-    }
-  }
-
-  /* Since the chip floats, header doesn't need extra right padding */
-  .nav { padding-right: 1rem; }
-}
-
-/* Optional: accessible focus ring (applies to all viewports) */
-.lang-switcher button:focus-visible,
-.lang-switcher a:focus-visible {
-  outline: 2px solid color-mix(in oklab, var(--brand) 70%, #fff);
-  outline-offset: 2px;
-  border-radius: 999px;
-}
-
-/* Optional: avoid chip touching hero text on ultra-small phones */
-@media (max-width: 420px) {
-  .hero { scroll-margin-top: calc(var(--nav-height) + 56px); }
-}
-/* ============================
-   LANG SWITCHER — FINAL OVERRIDE
-   Mobile only (≤768px)
-   - Fixed under header
-   - Centered horizontally (like your screenshot)
-   - Ignores previous absolute rules
-   ============================ */
-@media (max-width: 768px) {
-  header .lang-switcher,
-  .nav .lang-switcher,
-  .lang-switcher {
-    position: fixed !important;                       /* do not scroll with content */
-    z-index: 2147483647 !important;                   /* above everything */
-    top: calc(var(--nav-height) + 8px) !important;    /* sit under header */
-    left: 50% !important;                             
-    right: auto !important;                           
-    transform: translateX(-50%) !important;           /* center horizontally */
-    margin: 0 !important;
-
-    /* Modern glassy look kept */
-    display: inline-flex !important;
-    gap: 8px !important;
-    padding: 6px !important;
-    border-radius: 999px !important;
-    background: rgba(255,255,255,.85) !important;
-    border: 1px solid color-mix(in oklab, var(--brand) 30%, #e5e7eb) !important;
-    box-shadow: 0 12px 28px rgba(0,0,0,.12) !important;
-    backdrop-filter: blur(8px) !important;
-    -webkit-backdrop-filter: blur(8px) !important;
-  }
-
-  /* Active pill */
-  .lang-switcher .active,
-  .lang-switcher [aria-current="true"] {
-    background: var(--brand) !important;
-    color: #fff !important;
-    box-shadow: 0 10px 22px color-mix(in oklab, var(--brand) 45%, transparent) !important;
-  }
-
-  /* Respect iOS safe areas */
-  @supports (padding: max(0px)) {
-    header .lang-switcher,
-    .nav .lang-switcher,
-    .lang-switcher {
-      top: calc(var(--nav-height) + max(8px, env(safe-area-inset-top))) !important;
-    }
-  }
-
-  /* RTL: keep it centered (no flip needed), but if you prefer right aligned in RTL,
-     uncomment the block below and remove the centering above.
-  */
-  /*
-  html[dir="rtl"] .lang-switcher {
-    left: auto !important;
-    right: max(10px, env(safe-area-inset-right)) !important;
-    transform: none !important;
-  }
-  */
-
-  /* Kill legacy mobile rule that sets it absolute in your CSS */
-  .nav .lang-switcher { position: fixed !important; }
-}
-
-/* Optional: focus ring for accessibility */
-.lang-switcher button:focus-visible,
-.lang-switcher a:focus-visible {
-  outline: 2px solid color-mix(in oklab, var(--brand) 70%, #fff);
-  outline-offset: 2px;
-  border-radius: 999px;
+  :root { --nav-height: 140px; }
+  .hero { padding-top: calc(var(--nav-height) + 1rem); }
 }
