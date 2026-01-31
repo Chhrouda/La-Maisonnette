@@ -1607,3 +1607,174 @@ header {
     transform: scale(1.02);   /* compensates blur edge shrink */
   }
 }
+/* ======================================================
+   MOBILE FIX PACK — FINAL & SAFE
+   Zero JS impact
+====================================================== */
+
+@media (max-width: 768px) {
+
+  /* ------------------
+     GLOBAL FIXES
+  ------------------ */
+  body {
+    overflow-x: hidden;
+  }
+
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* ------------------
+     NAVBAR
+  ------------------ */
+  header {
+    position: fixed;
+  }
+
+  .nav {
+    padding: 0.8rem 1rem;
+  }
+
+  .lang-switcher {
+    top: 0.6rem;
+    right: 0.6rem;
+    transform: scale(0.92);
+  }
+
+  /* ------------------
+     HERO (NO CLIPPING)
+  ------------------ */
+  .hero {
+    min-height: auto;
+    padding-top: calc(var(--nav-height) + 1rem);
+    padding-bottom: 2.5rem;
+  }
+
+  .hero-box,
+  .hero .card {
+    padding: 1.8rem 1.2rem;
+    max-width: 100%;
+  }
+
+  .hero h1 {
+    font-size: 1.9rem;
+    line-height: 1.2;
+  }
+
+  .hero p {
+    font-size: 0.95rem;
+  }
+
+  .hero-btn {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  /* ------------------
+     PRODUCTS GRID
+  ------------------ */
+  .products {
+    gap: 1.4rem;
+  }
+
+  .product {
+    max-width: 100%;
+  }
+
+  .product img {
+    height: 180px;
+  }
+
+  /* ------------------
+     MODAL (PRODUCT DETAILS)
+  ------------------ */
+  .modal-dialog {
+    width: calc(100% - 16px);
+    max-width: none;
+    margin: calc(var(--nav-height) + 6px) 8px 8px;
+    border-radius: 14px;
+  }
+
+  .details-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .details-main-img {
+    max-height: 45vh;
+  }
+
+  .details-title {
+    font-size: 1.35rem;
+  }
+
+  .details-price {
+    font-size: 1.05rem;
+  }
+
+  /* Sticky actions safe area */
+  .details-actions {
+    position: sticky;
+    bottom: 0;
+    background: #fff;
+    padding: 12px 10px;
+    margin: 10px -10px -10px;
+    box-shadow: 0 -10px 24px rgba(0,0,0,.08);
+  }
+
+  @supports (padding: max(0px)) {
+    .details-actions {
+      padding-bottom: max(12px, env(safe-area-inset-bottom));
+    }
+  }
+
+  .primary-cta,
+  .wa-btn.modern {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* ------------------
+     FLOATING CART
+  ------------------ */
+  .floating-cart {
+    bottom: 12px;
+    right: 12px;
+    padding: 10px 14px;
+    font-size: 0.9rem;
+  }
+
+  /* ------------------
+     TRUST / WHY
+  ------------------ */
+  .trust-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+  }
+
+  .why {
+    padding: 3rem 1rem;
+  }
+
+  .why h2 {
+    font-size: 1.6rem;
+  }
+}
+
+/* EXTRA SMALL PHONES (≤360px) */
+@media (max-width: 360px) {
+
+  .hero h1 {
+    font-size: 1.7rem;
+  }
+
+  .product img {
+    height: 160px;
+  }
+
+  .details-main-img {
+    max-height: 38vh;
+  }
+}
