@@ -1517,7 +1517,19 @@ header {
 }
 
 .hero::before {
-  background-image: url("/images/designer-bg.png?v=3");
+  background-image: url("/images/Designer-bg.png?v=3");
   background-size: cover;
   background-position: center;
+}
+/* Force hero background to a root-relative, versioned URL */
+.hero::before {
+  content: "";                 /* IMPORTANT for pseudo-element to render */
+  position: absolute;
+  inset: 0;
+  background-image: url("/images/Designer-bg.png?v=5"); /* <- pick the URL that loads in step #2 */
+  background-size: cover;
+  background-position: center;
+  filter: blur(2px);
+  transform: scale(1.04);
+  z-index: 0;
 }
