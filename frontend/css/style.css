@@ -1517,5 +1517,7 @@ header {
 }
 
 .hero::before {
-  background-image: url("../images/designer-bg.png");
+  background-image: url("/images/designer-bg.png?v=3");
+  background-size: cover;
+  background-position: center;
 }
