@@ -1,0 +1,15 @@
+services:
+  - type: static_site
+    name: la-maisonnette
+    env: static
+    staticPublishPath: frontend
+    headers:
+      - path: /sitemap.xml
+        name: Cache-Control
+        value: no-cache, no-store, must-revalidate
+      - path: /sitemap.xml
+        name: Pragma
+        value: no-cache
+      - path: /sitemap.xml
+        name: Expires
+        value: "0"
