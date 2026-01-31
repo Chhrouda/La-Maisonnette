@@ -1816,4 +1816,74 @@ header {
   align-items: center;
   justify-content: center;
 }
+/* ======================================================
+   MOBILE NAVBAR — FINAL FIX (DROP-IN)
+   No JS • No HTML changes • Safe overrides only
+====================================================== */
+@media (max-width: 768px) {
+
+  /* Header sizing */
+  :root {
+    --nav-height: 140px;
+  }
+
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #fffefb;
+    z-index: 999;
+  }
+
+  /* Nav layout */
+  .nav {
+    display: grid;
+    grid-template-rows: auto auto;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.8rem 1rem 0.9rem;
+  }
+
+  /* Brand / Logo */
+  .nav h1,
+  .nav .logo,
+  .nav strong {
+    margin: 0;
+    text-align: center;
+    font-size: 1.55rem;
+    font-weight: 900;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+
+  /* Nav links row */
+  .nav-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+    font-size: 0.95rem;
+  }
+
+  .nav-links a {
+    margin: 0;
+    padding: 0.2rem 0;
+    white-space: nowrap;
+  }
+
+  /* Language switcher (top right pill) */
+  .lang-switcher {
+    position: absolute;
+    top: 0.6rem;
+    right: 0.6rem;
+    transform: scale(0.9);
+  }
+
+  /* Prevent hero overlap */
+  .hero {
+    padding-top: calc(var(--nav-height) + 1rem);
+  }
+}
 
