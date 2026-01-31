@@ -48,6 +48,29 @@ const translations = {
     home_sub: "Artisanal Tunisian flavors prepared with care, tradition, and family passion.",
     explore: "Explore our crafted food",
 
+
+// Product names
+    harissa_name: "Traditional Harissa Arbi 500g",
+    barquette_name: "Homemade tartlet – 12 pieces",
+    feuilletee_name: "Fresh Puff Pastry 1kg",
+
+    // Product descriptions
+    harissa_desc:
+      "Artisanal Harissa Arbi, handcrafted from a family recipe for a rich, authentic flavor. Perfect for elevating Tunisian dishes.",
+    barquette_desc:
+      "Fresh homemade tartlet, hand‑crafted for a light, crisp texture and authentic taste. Ideal to complement your meals.",
+    feuilletee_desc:
+      "Artisanal puff pastry made with butter, delivering light, crisp layers and delicious flavor. Perfect for sweet and savory recipes.",
+
+    
+
+    harissa_desc:
+      "Artisanal Arbi Harissa handmade using a family recipe.",
+    barquette_desc:
+      "Fresh homemade barquette pastry, handcrafted daily.",
+    feuilletee_desc:
+          "Fresh artisanal puff pastry made with butter.",
+
     products_title: "Our crafted food",
     cart_title: "Your Cart",
     checkout_title: "Checkout",
@@ -113,6 +136,19 @@ const translations = {
     contact_title: "Contactez‑nous",
     contact_sub: "Vous avez des questions ou des remarques ? Nous serions ravis de vous répondre.",
 
+// Product names
+    harissa_name: "Harissa Arbi Traditionnelle 500g",
+    barquette_name: "Barquette faite maison 12 pièces",
+    feuilletee_name: "Pâte Feuilletée Fraîche 1kg",
+
+    // Product descriptions
+    harissa_desc:
+      "Harissa Arbi artisanale préparée à la main selon une recette familiale, offrant une intensité savoureuse et un caractère authentique. Parfaite pour relever les plats tunisiens.",
+    barquette_desc:
+      "Barquette fraîche faite maison, travaillée à la main pour un croustillant léger et une saveur authentique. Idéale pour accompagner vos repas.",
+    feuilletee_desc:
+      "Pâte feuilletée artisanale préparée avec du beurre, offrant un feuilletage léger, croustillant et savoureux. Parfaite pour les préparations sucrées et salées.",
+
     product_default_desc: "Produit fait main par La Maisonnette.",
 
     remove: "Supprimer",
@@ -155,6 +191,19 @@ const translations = {
     products: "مأكولاتنا اليدوية",
     cart: "القفة",
     contact: "إتصل بينا",
+    
+harissa_desc:
+      "هريسة عربية حرفية محضّرة يدويًا وفق وصفة عائلية، بنكهة أصيلة ومتوازنة. مثالية لإضفاء نكهة مميزة على الأطباق التونسية.",
+    barquette_desc:
+      "باركيت طازجة منزلية، مصنوعة يدويًا لقوام مقرمش وخفيف وطعم أصيل. مثالية لمرافقة وجباتكم.",
+    feuilletee_desc:
+      "عجينة مورقة حرفية مصنوعة بالزبدة لطبقات خفيفة ومقرمشة ومذاق لذيذ. مثالية للوصفات المالحة والحلوة.",
+
+// Product names
+    harissa_name: "هريسة عربي تقليدية 500غ",
+    barquette_name: "باركيت منزلية – 12 قطعة",
+    feuilletee_name: "عجينة مورقة طازجة 1كغ",
+
 
     add_to_cart: "زيد للسلة",
     see_details: "شوف التفاصيل",
@@ -658,7 +707,7 @@ document.addEventListener("DOMContentLoaded", () => {
       price: priceText,
       priceValue,
       image,
-      images: [image, image, image],
+      images: [image],
       desc: (card.dataset.desc && card.dataset.desc.trim()) || tKey('product_default_desc')
     };
 

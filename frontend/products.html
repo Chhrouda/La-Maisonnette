@@ -25,12 +25,12 @@
     {
       "@type": "Product",
       "name": "Harissa Traditionnelle",
-      "image": "https://la-maisonnette.onrender.com/images/harissa.jpg",
-      "description": "Harissa artisanale préparée selon une recette familiale.",
+      "image": "https://la-maisonnette.onrender.com/images/harissa.png",
+      "description": "Harissa artisanale préparée à la main selon une recette familiale, offrant une intensité savoureuse et un caractère authentique. Parfaite pour relever vos plats traditionnels tunisiens et méditerranéens avec une touche épicée inoubliable.",
       "offers": {
         "@type": "Offer",
         "priceCurrency": "TND",
-        "price": "15",
+        "price": "17.5",
         "availability": "https://schema.org/InStock",
         "url": "https://la-maisonnette.onrender.com/products.html"
       }
@@ -39,11 +39,11 @@
       "@type": "Product",
       "name": "Barket Maison",
       "image": "https://la-maisonnette.onrender.com/images/barket.jpg",
-      "description": "Barket fraîche faite à la main, croustillante et savoureuse.",
+      "description": "Barket fraîche artisanale, travaillée à la main pour offrir un croustillant délicat et une saveur incomparable. Parfaite pour accompagner vos repas ou comme en-cas savoureux.",
       "offers": {
         "@type": "Offer",
         "priceCurrency": "TND",
-        "price": "8",
+        "price": "5",
         "availability": "https://schema.org/InStock",
         "url": "https://la-maisonnette.onrender.com/products.html"
       }
@@ -51,12 +51,12 @@
     {
       "@type": "Product",
       "name": "Pâte Feuilletée Fraîche",
-      "image": "https://la-maisonnette.onrender.com/images/feuillete.jpg",
-      "description": "Pâte feuilletée artisanale pour vos meilleures préparations.",
+      "image": "https://la-maisonnette.onrender.com/images/feuillette.png",
+      "description": "Pâte feuilletée artisanale, préparée avec du beurre pour garantir un feuilletage léger, croustillant et savoureux. Idéale pour vos meilleures préparations sucrées et salées : tartes, chaussons, mille-feuilles, quiches et feuilletés maison. Une qualité authentique, faite avec soin pour un résultat parfait à chaque fois.",
       "offers": {
         "@type": "Offer",
         "priceCurrency": "TND",
-        "price": "12",
+        "price": "15",
         "availability": "https://schema.org/InStock",
         "url": "https://la-maisonnette.onrender.com/products.html"
       }
@@ -102,46 +102,70 @@
   <div class="products" id="products-list">
 
   <!-- PRODUCT 1 — HARISSA -->
-  <div class="product" data-name="Harissa Traditionnelle" data-price="15">
-    <img src="images/harissa.jpg" />
-    <h3>Harissa Traditionnelle</h3>
-    <p>15 TND</p>
+  <div class="product" data-name="Harissa Arbi Traditionnelle 500g" data-price="17.5"
+      data-images="images/harissa.png,images/harissa-2.png"
+      data-desc="Harissa Arbi artisanale préparée à la main selon une recette familiale, offrant une intensité savoureuse et un caractère authentique. Parfaite pour relever les plats tunisiens.">
+    
 
-    <button type="button" class="see-details-btn" data-i18n="see_details">
-      See details
-    </button>
+      <img src="images/harissa.png" />
+      <h3 data-i18n="harissa_name">Harissa Arbi Traditionnelle 500g</h3>
+      <p data-i18n="price_17.5">TND 17.5</p>
 
-    <button class="addToCart" data-i18n="add_to_cart">Add to Cart</button>
-  </div>
+      <button
+  type="button"
+  class="see-details-btn"
+  data-i18n="see_details"
+>
+  See details
+</button>
 
-  <!-- PRODUCT 2 — BARKET -->
-  <div class="product" data-name="Barket Maison" data-price="8">
-    <img src="images/barket.jpg" />
-    <h3>Barket Maison</h3>
-    <p>8 TND</p>
 
-    <button type="button" class="see-details-btn" data-i18n="see_details">
-      See details
-    </button>
 
-    <button class="addToCart" data-i18n="add_to_cart">Add to Cart</button>
-  </div>
+      <button class="addToCart" data-i18n="add_to_cart">Add to Cart</button>
+    </div>
 
-  <!-- PRODUCT 3 — PATE FEUILLETEE -->
-  <div class="product" data-name="Pâte Feuilletée Fraîche" data-price="12">
-    <img src="images/feuillete.jpg" />
-    <h3>Pâte Feuilletée Fraîche</h3>
-    <p>12 TND</p>
+    <!-- PRODUCT 2 —  BARQUETTE -->
+  <div class="product" data-name="Barquette faite maison 12 pièces" data-price="5"
+      data-images="images/barquette.png"
+      data-desc="Barquette fraîche faite maison, travaillée à la main pour un croustillant léger et une saveur authentique. Idéale pour accompagner vos repas.">
+    
 
-    <button type="button" class="see-details-btn" data-i18n="see_details">
-      See details
-    </button>
+      <img src="images/barquette.png" />
+      <h3 data-i18n="barquette_name">Barquette faite maison 12 pièces</h3>
+      <p data-i18n="price_5">TND 5</p>
 
-    <button class="addToCart" data-i18n="add_to_cart">Add to Cart</button>
-  </div>
+      <button
+  type="button"
+  class="see-details-btn"
+  data-i18n="see_details"
+>
+  See details
+</button>
 
-</div>
 
+
+      <button class="addToCart" data-i18n="add_to_cart">Add to Cart</button>
+    </div>
+    <!-- PRODUCT 3 — feui -->
+  <div class="product" data-name="Pâte Feuilletée Fraîche 1kg" data-price="15"
+      data-images="images/feuillette.png,images/feuillette-2.png"
+      data-desc="Pâte feuilletée artisanale préparée avec du beurre, offrant un feuilletage léger, croustillant et savoureux. Parfaite pour les préparations sucrées et salées.">
+      <img src="images/feuillette.png" />
+      <h3 data-i18n="feuilletee_name">Pâte Feuilletée Fraîche 1kg</h3>
+      <p data-i18n="price_15">TND 15</p>
+
+      <button
+  type="button"
+  class="see-details-btn"
+  data-i18n="see_details"
+>
+  See details
+</button>
+
+
+
+      <button class="addToCart" data-i18n="add_to_cart">Add to Cart</button>
+    </div>
   </div>
 </div>
 
