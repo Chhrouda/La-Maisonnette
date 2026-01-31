@@ -1,21 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
   <url>
-    <loc>https://La-Maisonnette.onrender.com/</loc>
+    <loc>https://la-maisonnette.onrender.com/</loc>
+    <lastmod>2026-01-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.00</priority>
   </url>
-
   <url>
-    <loc>https://La-Maisonnette.onrender.com/products.html</loc>
+    <loc>https://la-maisonnette.onrender.com/products.html</loc>
+    <lastmod>2026-01-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
   </url>
-
   <url>
-    <loc>https://La-Maisonnette.onrender.com/contact.html</loc>
+    <loc>https://la-maisonnette.onrender.com/contact.html</loc>
+    <lastmod>2026-01-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
   </url>
-
   <url>
-    <loc>https://La-Maisonnette.onrender.com/cart.html</loc>
+    <loc>https://la-maisonnette.onrender.com/cart.html</loc>
+    <lastmod>2026-01-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.60</priority>
   </url>
-
 </urlset>
-

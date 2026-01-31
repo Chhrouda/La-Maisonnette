@@ -1,4 +1,5 @@
+# La Maisonnette — robots.txt
 User-agent: *
 Allow: /
 
-Sitemap: https://La-Maisonnette.onrender.com/sitemap.xml
+Sitemap: https://la-maisonnette.onrender.com/sitemap.xml
