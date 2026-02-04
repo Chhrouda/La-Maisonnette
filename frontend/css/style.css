@@ -78,17 +78,7 @@ header {
 }
 
 
-/* =====================
-   HERO
-===================== */
-.hero {
-  height: 70vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  background: linear-gradient(to bottom, #fff, #f3f4f6);
-}
+
 
 .hero h1 {
   font-size: 3rem;
@@ -114,12 +104,7 @@ header {
   background: #2453d3;
   color: #fff;
 }
-/* =====================
-   HERO OFFSET FIX (CRITICAL)
-===================== */
-.hero {
-  padding-top: var(--nav-height);
-}
+
 
 
 /* =====================
@@ -331,11 +316,7 @@ footer {
 
 /* ===== HERO SECTION (FORCED BACKGROUND FIX) ===== */
 
-.hero {
-  position: relative;
-  min-height: 100vh;
-  overflow: hidden;
-}
+
 
 /* Background image with blur */
 .hero::before {
@@ -431,16 +412,7 @@ footer {
    PERFECTED HOME HERO
 ===================== */
 
-/* HERO WRAPPER */
-.hero {
-  position: relative;
-  padding-top: var(--nav-height);
-  min-height: calc(100svh - var(--nav-height));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
+
 
 /* DARK OVERLAY (cleaner contrast) */
 .hero-overlay {
@@ -1517,15 +1489,7 @@ header {
 }
 
 /* 1) Hero container */
-.hero {
-  position: relative;
-  min-height: clamp(52vh, 62vw, 78vh);  /* responsive height */
-  overflow: hidden;
-  isolation: isolate;                   /* create a new stacking context */
-  display: grid;
-  place-items: center;                  /* centers your card */
-  padding-inline: 1rem;
-}
+
 
 /* Keep hero content above overlays */
 .hero > * {
@@ -1581,24 +1545,18 @@ header {
 }
 
 /* 5) Responsive focal re-position: narrow screens often crop center-left too hard */
-@media (max-width: 900px) {
-  .hero {
-    min-height: 58vh;
-  }
+
   .hero::before {
     /* slide subject more to center on small screens */
     background-position: 45% 45%;
   }
-}
 
-@media (max-width: 600px) {
-  .hero {
-    min-height: 54vh;
-  }
+
+
   .hero::before {
     background-position: 55% 45%;
   }
-}
+
 
 /* 6) If you still want a tiny blur on the background only on large screens: */
 @media (min-width: 1200px) {
@@ -1778,13 +1736,7 @@ header {
     max-height: 38vh;
   }
 }
-@media (max-width: 768px) {
-  .hero {
-    min-height: auto;
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-  }
-}
+
 .hero .explore-btn {
   display: inline-flex !important;
   visibility: visible !important;
@@ -1954,4 +1906,71 @@ header {
     color: #fff !important;
   }
 
+}
+/* =========================================================
+   LA MAISONNETTE — FINAL MOBILE HERO FIX (OVERRIDES ALL)
+   Paste at the END of your CSS
+========================================================= */
+
+@media (max-width: 768px) {
+
+  /* Reset nav height to a stable size */
+  :root {
+    --nav-height: 118px !important;
+  }
+
+  /* Fix header */
+  header {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    background: #fffefb !important;
+  }
+
+  /* Mobile hero — STOP CROPPING */
+  .hero {
+    position: relative !important;
+    min-height: calc(100vh - var(--nav-height)) !important;
+    padding-top: calc(var(--nav-height) + 1rem) !important;
+    padding-bottom: 2.5rem !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: visible !important;
+  }
+
+  /* Force background to scale correctly */
+  .hero::before {
+    background-position: center !important;
+    background-size: cover !important;
+    transform: scale(1.05) !important;
+    filter: none !important;   /* no blur on mobile */
+  }
+
+  /* Ensure hero card fits safely on screen */
+  .hero-box,
+  .hero .card {
+    max-width: 92% !important;
+    padding: 1.6rem 1.2rem !important;
+    margin: 0 auto !important;
+  }
+
+  /* Text resizing */
+  .hero h1 {
+    font-size: 1.9rem !important;
+    line-height: 1.25 !important;
+  }
+
+  .hero p {
+    font-size: 1rem !important;
+  }
+
+  /* Button */
+  .hero-btn {
+    width: 100% !important;
+    max-width: 280px !important;
+  }
 }
