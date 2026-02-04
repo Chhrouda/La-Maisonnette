@@ -1515,3 +1515,235 @@ header {
   transform: translateY(-3px);
   box-shadow: 0 12px 26px rgba(199,54,36,0.45) !important;
 }
+/* 1) Hero container */
+
+
+/* Keep hero content above overlays */
+.hero > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* 2) Background image layer (no blur by default) */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  /* Use the relative path from /frontend/css/style.css to /frontend/images/… */
+  background-image: url("../images/Designer-bg.png?v=5");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  /* Focal point: push the subject (jar + basket) slightly left & down
+     Adjust these percentages until it feels perfect */
+  background-position: 30% 40%;
+
+  transform: none;          /* remove scale unless you re-enable blur */
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* 3) Soft contrast overlay so text reads better */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  /* Subtle dark/sepia wash + top/bottom gradients for readability */
+  background:
+    linear-gradient(to bottom, rgba(0,0,0,0.12), rgba(0,0,0,0.00) 40%, rgba(0,0,0,0.10)),
+    rgba(48, 32, 18, 0.08);  /* warm tone, matches your brand palette */
+
+  mix-blend-mode: multiply;  /* keeps colors rich without greying out */
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* 4) Optional: your hero card refinements for better contrast */
+.hero .card {
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  background: rgba(255, 255, 255, 0.86);
+  border-radius: 16px;
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.15),
+    0 1px 0 rgba(255,255,255,0.8) inset;
+}
+
+/* 5) Responsive focal re-position: narrow screens often crop center-left too hard */
+
+  .hero::before {
+    /* slide subject more to center on small screens */
+    background-position: 45% 45%;
+  }
+
+
+
+  .hero::before {
+    background-position: 55% 45%;
+  }
+
+
+/* 6) If you still want a tiny blur on the background only on large screens: */
+@media (min-width: 1200px) {
+  .hero::before {
+    filter: blur(1.2px);
+    transform: scale(1.02);   /* compensates blur edge shrink */
+  }
+}
+/* ======================================================
+   MOBILE FIX PACK — FINAL & SAFE
+   Zero JS impact
+====================================================== */
+
+@media (max-width: 768px) {
+
+  /* ------------------
+     GLOBAL FIXES
+  ------------------ */
+  body {
+    overflow-x: hidden;
+  }
+
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* ------------------
+     NAVBAR
+  ------------------ */
+  header {
+    position: fixed;
+  }
+
+  .nav {
+    padding: 0.8rem 1rem;
+  }
+
+  .lang-switcher {
+    top: 0.6rem;
+    right: 0.6rem;
+    transform: scale(0.92);
+  }
+
+  /* ------------------
+     HERO (NO CLIPPING)
+  ------------------ */
+  .hero {
+    min-height: auto;
+    padding-top: calc(var(--nav-height) + 1rem);
+    padding-bottom: 2.5rem;
+  }
+
+  .hero-box,
+  .hero .card {
+    padding: 1.8rem 1.2rem;
+    max-width: 100%;
+  }
+
+  .hero h1 {
+    font-size: 1.9rem;
+    line-height: 1.2;
+  }
+
+  .hero p {
+    font-size: 0.95rem;
+  }
+
+  .hero-btn {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  /* ------------------
+     PRODUCTS GRID
+  ------------------ */
+  .products {
+    gap: 1.4rem;
+  }
+
+  .product {
+    max-width: 100%;
+  }
+
+  .product img {
+    height: 180px;
+  }
+
+  /* ------------------
+     MODAL (PRODUCT DETAILS)
+  ------------------ */
+  .modal-dialog {
+    width: calc(100% - 16px);
+    max-width: none;
+    margin: calc(var(--nav-height) + 6px) 8px 8px;
+    border-radius: 14px;
+  }
+
+  .details-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .details-main-img {
+    max-height: 45vh;
+  }
+
+  .details-title {
+    font-size: 1.35rem;
+  }
+
+  .details-price {
+    font-size: 1.05rem;
+  }
+
+  /* Sticky actions safe area */
+  .details-actions {
+    position: sticky;
+    bottom: 0;
+    background: #fff;
+    padding: 12px 10px;
+    margin: 10px -10px -10px;
+    box-shadow: 0 -10px 24px rgba(0,0,0,.08);
+  }
+
+  @supports (padding: max(0px)) {
+    .details-actions {
+      padding-bottom: max(12px, env(safe-area-inset-bottom));
+    }
+  }
+
+  .primary-cta,
+  .wa-btn.modern {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* ------------------
+     FLOATING CART
+  ------------------ */
+  .floating-cart {
+    bottom: 12px;
+    right: 12px;
+    padding: 10px 14px;
+    font-size: 0.9rem;
+  }
+
+  /* ------------------
+     TRUST / WHY
+  ------------------ */
+  .trust-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+  }
+
+  .why {
+    padding: 3rem 1rem;
+  }
+
+  .why h2 {
+    font-size: 1.6rem;
+  }
+}
