@@ -78,7 +78,17 @@ header {
 }
 
 
-
+/* =====================
+   HERO
+===================== */
+.hero {
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(to bottom, #fff, #f3f4f6);
+}
 
 .hero h1 {
   font-size: 3rem;
@@ -104,7 +114,12 @@ header {
   background: #2453d3;
   color: #fff;
 }
-
+/* =====================
+   HERO OFFSET FIX (CRITICAL)
+===================== */
+.hero {
+  padding-top: var(--nav-height);
+}
 
 
 /* =====================
@@ -316,7 +331,11 @@ footer {
 
 /* ===== HERO SECTION (FORCED BACKGROUND FIX) ===== */
 
-
+.hero {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
 
 /* Background image with blur */
 .hero::before {
@@ -412,7 +431,16 @@ footer {
    PERFECTED HOME HERO
 ===================== */
 
-
+/* HERO WRAPPER */
+.hero {
+  position: relative;
+  padding-top: var(--nav-height);
+  min-height: calc(100svh - var(--nav-height));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
 
 /* DARK OVERLAY (cleaner contrast) */
 .hero-overlay {
@@ -1486,562 +1514,4 @@ header {
 .hero-btn:hover {
   transform: translateY(-3px);
   box-shadow: 0 12px 26px rgba(199,54,36,0.45) !important;
-}
-
-/* 1) Hero container */
-
-
-/* Keep hero content above overlays */
-.hero > * {
-  position: relative;
-  z-index: 2;
-}
-
-/* 2) Background image layer (no blur by default) */
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-
-  /* Use the relative path from /frontend/css/style.css to /frontend/images/… */
-  background-image: url("../images/Designer-bg.png?v=5");
-  background-repeat: no-repeat;
-  background-size: cover;
-
-  /* Focal point: push the subject (jar + basket) slightly left & down
-     Adjust these percentages until it feels perfect */
-  background-position: 30% 40%;
-
-  transform: none;          /* remove scale unless you re-enable blur */
-  z-index: 0;
-  pointer-events: none;
-}
-
-/* 3) Soft contrast overlay so text reads better */
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-
-  /* Subtle dark/sepia wash + top/bottom gradients for readability */
-  background:
-    linear-gradient(to bottom, rgba(0,0,0,0.12), rgba(0,0,0,0.00) 40%, rgba(0,0,0,0.10)),
-    rgba(48, 32, 18, 0.08);  /* warm tone, matches your brand palette */
-
-  mix-blend-mode: multiply;  /* keeps colors rich without greying out */
-  z-index: 1;
-  pointer-events: none;
-}
-
-/* 4) Optional: your hero card refinements for better contrast */
-.hero .card {
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
-  background: rgba(255, 255, 255, 0.86);
-  border-radius: 16px;
-  box-shadow:
-    0 10px 30px rgba(0,0,0,0.15),
-    0 1px 0 rgba(255,255,255,0.8) inset;
-}
-
-/* 5) Responsive focal re-position: narrow screens often crop center-left too hard */
-
-  .hero::before {
-    /* slide subject more to center on small screens */
-    background-position: 45% 45%;
-  }
-
-
-
-  .hero::before {
-    background-position: 55% 45%;
-  }
-
-
-/* 6) If you still want a tiny blur on the background only on large screens: */
-@media (min-width: 1200px) {
-  .hero::before {
-    filter: blur(1.2px);
-    transform: scale(1.02);   /* compensates blur edge shrink */
-  }
-}
-/* ======================================================
-   MOBILE FIX PACK — FINAL & SAFE
-   Zero JS impact
-====================================================== */
-
-@media (max-width: 768px) {
-
-  /* ------------------
-     GLOBAL FIXES
-  ------------------ */
-  body {
-    overflow-x: hidden;
-  }
-
-  .container {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-
-  /* ------------------
-     NAVBAR
-  ------------------ */
-  header {
-    position: fixed;
-  }
-
-  .nav {
-    padding: 0.8rem 1rem;
-  }
-
-  .lang-switcher {
-    top: 0.6rem;
-    right: 0.6rem;
-    transform: scale(0.92);
-  }
-
-  /* ------------------
-     HERO (NO CLIPPING)
-  ------------------ */
-  .hero {
-    min-height: auto;
-    padding-top: calc(var(--nav-height) + 1rem);
-    padding-bottom: 2.5rem;
-  }
-
-  .hero-box,
-  .hero .card {
-    padding: 1.8rem 1.2rem;
-    max-width: 100%;
-  }
-
-  .hero h1 {
-    font-size: 1.9rem;
-    line-height: 1.2;
-  }
-
-  .hero p {
-    font-size: 0.95rem;
-  }
-
-  .hero-btn {
-    width: 100%;
-    max-width: 280px;
-  }
-
-  /* ------------------
-     PRODUCTS GRID
-  ------------------ */
-  .products {
-    gap: 1.4rem;
-  }
-
-  .product {
-    max-width: 100%;
-  }
-
-  .product img {
-    height: 180px;
-  }
-
-  /* ------------------
-     MODAL (PRODUCT DETAILS)
-  ------------------ */
-  .modal-dialog {
-    width: calc(100% - 16px);
-    max-width: none;
-    margin: calc(var(--nav-height) + 6px) 8px 8px;
-    border-radius: 14px;
-  }
-
-  .details-grid {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-
-  .details-main-img {
-    max-height: 45vh;
-  }
-
-  .details-title {
-    font-size: 1.35rem;
-  }
-
-  .details-price {
-    font-size: 1.05rem;
-  }
-
-  /* Sticky actions safe area */
-  .details-actions {
-    position: sticky;
-    bottom: 0;
-    background: #fff;
-    padding: 12px 10px;
-    margin: 10px -10px -10px;
-    box-shadow: 0 -10px 24px rgba(0,0,0,.08);
-  }
-
-  @supports (padding: max(0px)) {
-    .details-actions {
-      padding-bottom: max(12px, env(safe-area-inset-bottom));
-    }
-  }
-
-  .primary-cta,
-  .wa-btn.modern {
-    width: 100%;
-    justify-content: center;
-  }
-
-  /* ------------------
-     FLOATING CART
-  ------------------ */
-  .floating-cart {
-    bottom: 12px;
-    right: 12px;
-    padding: 10px 14px;
-    font-size: 0.9rem;
-  }
-
-  /* ------------------
-     TRUST / WHY
-  ------------------ */
-  .trust-container {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.8rem;
-  }
-
-  .why {
-    padding: 3rem 1rem;
-  }
-
-  .why h2 {
-    font-size: 1.6rem;
-  }
-}
-
-/* EXTRA SMALL PHONES (≤360px) */
-@media (max-width: 360px) {
-
-  .hero h1 {
-    font-size: 1.7rem;
-  }
-
-  .product img {
-    height: 160px;
-  }
-
-  .details-main-img {
-    max-height: 38vh;
-  }
-}
-
-.hero .explore-btn {
-  display: inline-flex !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  margin-top: 1rem;
-}
-@media (max-width: 768px) {
-  .hero .explore-btn {
-    padding: 0.9rem 1.6rem;
-    font-size: 1rem;
-    border-radius: 999px;
-  }
-}
-.hero,
-.hero * {
-  overflow: visible;
-}
-.hero-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 1.2rem;
-}
-.hero {
-  min-height: 100vh;
-  padding: 2.5rem 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-@media (max-width: 768px) {
-  .nav {
-    position: relative;
-    display: grid;
-    grid-template-rows: auto auto; /* brand + links */
-    gap: .6rem;
-    padding: .9rem 1rem .95rem;
-    padding-right: 124px;           /* reserve space for pill */
-  }
-
-  .nav h1, .nav .logo, .nav strong {
-    text-align: center;
-    font-size: clamp(1.15rem, 4.2vw, 1.55rem);
-    font-weight: 900;
-    line-height: 1.2;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .lang-switcher {
-    position: absolute;
-    top: .6rem;
-    right: .6rem;
-    display: inline-flex;
-    gap: 8px;
-    padding: 4px;
-    border-radius: 999px;
-    background: color-mix(in oklab, #fff 80%, var(--brand) 20%);
-    border: 1px solid color-mix(in oklab, var(--brand) 35%, #d1d5db);
-    box-shadow: 0 10px 24px rgba(0,0,0,.10);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-  }
-  .lang-switcher .active,[aria-current="true"]{
-    background: var(--brand); color:#fff;
-    box-shadow: 0 10px 22px color-mix(in oklab, var(--brand) 45%, transparent);
-  }
-
-  :root { --nav-height: 140px; }
-  .hero { padding-top: calc(var(--nav-height) + 1rem); }
-}
-/* =====================================================
-   FORCE MOBILE NAVBAR OVERRIDE — DROP-IN FINAL
-   (Paste at END of CSS)
-===================================================== */
-@media (max-width: 768px) {
-
-  :root {
-    --nav-height: 120px;
-  }
-
-  /* HEADER — FORCE */
-  body header {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0;
-    width: 100% !important;
-    background: #fffefb !important;
-    border-bottom: 1px solid rgba(0,0,0,.08) !important;
-    z-index: 1000 !important;
-  }
-
-  /* NAV CONTAINER — KILL OLD FLEX */
-  body header .nav {
-    display: grid !important;
-    grid-template-rows: auto auto !important;
-    gap: 0.6rem !important;
-    text-align: center !important;
-
-    max-width: 1200px !important;
-    margin: 0 auto !important;
-    padding: 0.8rem 1rem 1rem !important;
-
-    align-items: center !important;
-    justify-items: center !important;
-
-    position: relative !important;
-  }
-
-  /* BRAND — FORCE CENTER */
-  body header .nav strong,
-  body header .nav h1,
-  body header .nav .logo {
-    font-size: 1.45rem !important;
-    font-weight: 900 !important;
-    color: var(--brand) !important;
-    line-height: 1.2 !important;
-
-    margin: 0 auto !important;
-    text-align: center !important;
-  }
-
-  /* LINKS — OVERRIDE ANY PREVIOUS RULE */
-  body header .nav-links {
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-
-    gap: 1.2rem !important;
-    flex-wrap: wrap !important;
-
-    font-weight: 600 !important;
-    text-align: center !important;
-
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-
-  /* LANGUAGE SWITCHER — FORCE TOP RIGHT */
-  body header .lang-switcher {
-    position: absolute !important;
-    top: 0.6rem !important;
-    right: 0.6rem !important;
-
-    display: flex !important;
-    gap: 6px !important;
-
-    transform: none !important;
-  }
-
-  body header .lang-switcher button {
-    border: 1px solid var(--brand) !important;
-    background: transparent !important;
-    color: var(--brand) !important;
-
-    padding: 4px 10px !important;
-    border-radius: 999px !important;
-
-    font-weight: 800 !important;
-    font-size: 0.75rem !important;
-  }
-
-  body header .lang-switcher button.active {
-    background: var(--brand) !important;
-    color: #fff !important;
-  }
-
-}
-/* =========================================================
-   LA MAISONNETTE — FINAL MOBILE HERO FIX (OVERRIDES ALL)
-   Paste at the END of your CSS
-========================================================= */
-
-@media (max-width: 768px) {
-
-  /* Reset nav height to a stable size */
-  :root {
-    --nav-height: 118px !important;
-  }
-
-  /* Fix header */
-  header {
-    position: fixed !important;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 999;
-    background: #fffefb !important;
-  }
-
-  /* Mobile hero — STOP CROPPING */
-  .hero {
-    position: relative !important;
-    min-height: calc(100vh - var(--nav-height)) !important;
-    padding-top: calc(var(--nav-height) + 1rem) !important;
-    padding-bottom: 2.5rem !important;
-
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    overflow: visible !important;
-  }
-
-  /* Force background to scale correctly */
-  .hero::before {
-    background-position: center !important;
-    background-size: cover !important;
-    transform: scale(1.05) !important;
-    filter: none !important;   /* no blur on mobile */
-  }
-
-  /* Ensure hero card fits safely on screen */
-  .hero-box,
-  .hero .card {
-    max-width: 92% !important;
-    padding: 1.6rem 1.2rem !important;
-    margin: 0 auto !important;
-  }
-
-  /* Text resizing */
-  .hero h1 {
-    font-size: 1.9rem !important;
-    line-height: 1.25 !important;
-  }
-
-  .hero p {
-    font-size: 1rem !important;
-  }
-
-  /* Button */
-  .hero-btn {
-    width: 100% !important;
-    max-width: 280px !important;
-  }
-}
-/* ===========================================
-   FINAL MOBILE NAVBAR LAYOUT (100% FIXED)
-   Logo LEFT — Links CENTER — Language RIGHT
-=========================================== */
-@media (max-width: 768px) {
-
-  :root {
-    --nav-height: 118px !important;
-  }
-
-  header {
-    position: fixed !important;
-    top: 0; left: 0;
-    width: 100%;
-    background: #fffefb !important;
-    z-index: 1000;
-  }
-
-  /* 3‑column layout: LEFT | CENTER | RIGHT */
-  .nav {
-    display: grid !important;
-    grid-template-columns: auto 1fr auto !important;
-    align-items: center !important;
-    padding: 0.7rem 1rem !important;
-  }
-
-  /* LOGO ON THE LEFT */
-  .nav strong {
-    justify-self: start !important;
-    font-size: 1.35rem !important;
-    font-weight: 900 !important;
-    white-space: nowrap;
-  }
-
-  /* NAV LINKS CENTERED */
-  .nav > div:not(.lang-switcher) {
-    justify-self: center !important;
-
-    display: flex !important;
-    gap: 1rem !important;
-    flex-wrap: wrap !important;
-    text-align: center !important;
-  }
-
-  .nav > div a {
-    margin: 0 !important;
-    font-size: 0.95rem !important;
-  }
-
-  /* LANGUAGE SWITCHER ON THE RIGHT */
-  .lang-switcher {
-    justify-self: end !important;
-    display: flex !important;
-    gap: 6px !important;
-  }
-
-  .lang-switcher button {
-    padding: 4px 10px !important;
-    border-radius: 999px;
-    font-size: 0.75rem !important;
-    font-weight: 700;
-    border: 1px solid var(--brand);
-    background: transparent;
-    color: var(--brand);
-  }
-
-  .lang-switcher button.active {
-    background: var(--brand);
-    color: white;
-  }
 }
