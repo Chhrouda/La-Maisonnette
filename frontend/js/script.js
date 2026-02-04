@@ -38,6 +38,8 @@ const translations = {
     products: "Our crafted food",
     cart: "Cart",
     contact: "Contact",
+    
+
 
     add_to_cart: "Add to Cart",
     see_details: "See Details",
@@ -121,6 +123,7 @@ const translations = {
     products: "Nos délices artisanaux",
     cart: "Panier",
     contact: "Contact",
+    
 
     add_to_cart: "Ajouter au panier",
     see_details: "Voir les détails",
@@ -212,7 +215,7 @@ harissa_desc:
     home_title: "ماكلة بسيطة وبنينة معمولة بحب — من دارنا لداركم.",
     home_sub: "نكهات تونسية معمولة بيدينا وبوصفات عريقة وروح العايلة.",
     explore: "إكتشف المأكولات",
-
+   
     products_title: "مأكولاتنا اليدوية",
     cart_title: "القفة متاعك",
     checkout_title: "الخلاص",
@@ -576,7 +579,7 @@ document.addEventListener("DOMContentLoaded", () => {
     lastFocused = document.activeElement;
 
     // Fill content
-    nameEl.textContent = prod.name;
+    nameEl.textContent = tKey(prod.name);
 
     if (prod.priceValue != null && !Number.isNaN(prod.priceValue)) {
       priceEl.textContent = `${prod.priceValue} TND`;
@@ -584,7 +587,7 @@ document.addEventListener("DOMContentLoaded", () => {
       priceEl.textContent = prod.price; // already includes currency text
     }
 
-    descEl.textContent = prod.desc || tKey('product_default_desc');
+    descEl.textContent = tKey(prod.desc) || tKey('product_default_desc');
 
     const images = Array.isArray(prod.images) && prod.images.length
       ? prod.images
