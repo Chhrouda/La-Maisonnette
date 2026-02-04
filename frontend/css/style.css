@@ -1974,3 +1974,64 @@ header {
     max-width: 280px !important;
   }
 }
+/* =========================================================
+   LA MAISONNETTE — FINAL MOBILE NAVBAR FIX
+   (Logo left, links centered, language switcher right)
+========================================================= */
+@media (max-width: 768px) {
+
+  :root {
+    --nav-height: 118px !important;
+  }
+
+  /* Header stays fixed */
+  header {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: #fffefb !important;
+  }
+
+  /* NAV STRUCTURE — 3 columns */
+  body header .nav {
+    display: grid !important;
+    grid-template-columns: auto 1fr auto !important;   /* LEFT — CENTER — RIGHT */
+    align-items: center !important;
+    padding: 0.8rem 1rem !important;
+
+    /* Remove conflicting older styles */
+    grid-template-rows: auto !important;
+    justify-items: unset !important;
+    text-align: unset !important;
+  }
+
+  /* BRAND — Left-aligned and visible */
+  body header .nav strong,
+  body header .nav h1,
+  body header .nav .logo {
+    justify-self: start !important;
+    font-size: 1.4rem !important;
+    font-weight: 900 !important;
+    color: var(--brand) !important;
+    white-space: nowrap !important;
+  }
+
+  /* NAV LINKS — Centered */
+  body header .nav-links {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 1rem !important;
+    flex-wrap: wrap !important;
+  }
+
+  /* LANGUAGE SWITCHER — Right column */
+  body header .lang-switcher {
+    justify-self: end !important;
+    position: relative !important;
+    top: 0 !important;
+    right: 0 !important;
+    transform: none !important;
+  }
+}
