@@ -38,7 +38,9 @@ const translations = {
     products: "Our crafted food",
     cart: "Cart",
     contact: "Contact",
-    
+    price_12: "TND 12",
+    price_6: "TND 6",
+    price_15: "TND 15",
 
 
     add_to_cart: "Add to Cart",
@@ -123,7 +125,9 @@ const translations = {
     products: "Nos délices artisanaux",
     cart: "Panier",
     contact: "Contact",
-    
+    price_12: "12 TND",
+    price_: "6 TND",
+    price_15: "15 TND",
 
     add_to_cart: "Ajouter au panier",
     see_details: "Voir les détails",
@@ -215,7 +219,10 @@ harissa_desc:
     home_title: "ماكلة بسيطة وبنينة معمولة بحب — من دارنا لداركم.",
     home_sub: "نكهات تونسية معمولة بيدينا وبوصفات عريقة وروح العايلة.",
     explore: "إكتشف المأكولات",
-   
+    price_12: "12 د",
+    price_6: "6 د",
+    price_15: "15 د",
+
     products_title: "مأكولاتنا اليدوية",
     cart_title: "القفة متاعك",
     checkout_title: "الخلاص",
