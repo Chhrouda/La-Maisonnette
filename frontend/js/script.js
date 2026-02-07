@@ -54,7 +54,7 @@ const translations = {
 
 
 // Product names
-    harissa_name: "Traditional Harissa Arbi 500g",
+    harissa_name: "Traditional Harissa Arbi 300g",
     barquette_name: "Homemade tartlet – 12 pieces",
     feuilletee_name: "Fresh Puff Pastry 1kg",
 
@@ -144,7 +144,7 @@ const translations = {
     contact_sub: "Vous avez des questions ou des remarques ? Nous serions ravis de vous répondre.",
 
 // Product names
-    harissa_name: "Harissa Arbi Traditionnelle 500g",
+    harissa_name: "Harissa Arbi Traditionnelle 300g",
     barquette_name: "Barquette faite maison 12 pièces",
     feuilletee_name: "Pâte Feuilletée Fraîche 1kg",
 
@@ -207,7 +207,7 @@ harissa_desc:
       "عجينة مورقة حرفية مصنوعة بالزبدة لطبقات خفيفة ومقرمشة ومذاق لذيذ. مثالية للوصفات المالحة والحلوة.",
 
 // Product names
-    harissa_name: "هريسة عربي تقليدية 500غ",
+    harissa_name: "هريسة عربي تقليدية 300غ",
     barquette_name: "باركيت منزلية – 12 قطعة",
     feuilletee_name: "عجينة مورقة طازجة 1كغ",
 
