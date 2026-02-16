@@ -597,8 +597,9 @@ document.addEventListener("DOMContentLoaded", () => {
     descEl.textContent = tKey(prod.desc) || tKey('product_default_desc');
 
     const images = Array.isArray(prod.images) && prod.images.length
-      ? prod.images
-      : [prod.image, prod.image, prod.image].filter(Boolean);
+  ? prod.images
+  : [prod.image];
+
 
     // Main image
     if (images[0]) {
@@ -705,7 +706,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const priceText  = card.querySelector('p')?.textContent?.trim()
                     || (priceValue != null ? `${priceValue} TND` : '');
 
-    const image = imgEl?.src || card.dataset.image || '';
+    const image = imgEl?.getAttribute('src') || card.dataset.image || '';
+
 
     if (!name || !priceText || !image) {
       console.warn('❌ Product structure/data missing');
@@ -728,7 +730,7 @@ if (images.length === 0) {
       price: priceText,
       priceValue,
       image,
-      images: [image],
+      images: images,
       desc: (card.dataset.desc && card.dataset.desc.trim()) || tKey('product_default_desc')
     };
 
