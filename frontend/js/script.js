@@ -711,7 +711,18 @@ document.addEventListener("DOMContentLoaded", () => {
       console.warn('❌ Product structure/data missing');
       return;
     }
+    
+let images = [];
+if (card.dataset.images) {
+  images = card.dataset.images
+    .split(',')
+    .map(s => s.trim())
+    .filter(Boolean);
+}
 
+if (images.length === 0) {
+  images = [image];
+}
     const prod = {
       name,
       price: priceText,
